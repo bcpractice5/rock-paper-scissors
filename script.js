@@ -1,9 +1,18 @@
 // User inputs either rock, paper, or scissors. Case insensitive.
 let input = () => {
-    let selection = prompt("Type rock, paper, or scissors: ");
-    let refined = selection[0].toUpperCase() + selection.slice(1).toLowerCase();
-    console.log(`You chose ${refined}.`);
-    return refined;
+    while (true) {
+        let selection = prompt("Type rock, paper, or scissors: ");
+        let refined = selection[0].toUpperCase() + selection.slice(1).toLowerCase();
+        if (
+            refined === "Rock" || 
+            refined === "Paper" || 
+            refined === "Scissors"
+            ) {
+            console.log(`You chose ${refined}.`);
+            return refined;
+        } 
+        console.log("Invalid input, try again.")
+    }
 }
 
 // CPU randomly returns rock, paper, or scissors.
@@ -20,7 +29,7 @@ let selectWeapon = () => {
     return "Scissors";
 }
 
-// User selection and CPU selection are compared for a winner. rock = 4, paper = 5, scissors = 8
+// User selection and CPU selection are compared for a winner. rock = 4, paper = 5, scissors = 8 characters.
 // Message is displayed based on win/loss and includes chosen weapons.
 let compareWeapons = (userWeapon, cpuWeapon) => {
     let difference = userWeapon.length - cpuWeapon.length;
